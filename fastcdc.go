@@ -201,7 +201,7 @@ func (c *Chunker) fillBuffer() error {
 	// Fill the rest of the buffer
 	m, err := io.ReadFull(c.rd, c.buf[n:])
 	if err == io.EOF || err == io.ErrUnexpectedEOF {
-		c.end = n+m
+		c.end = n + m
 		c.eof = true
 	} else if err != nil {
 		return err
@@ -236,15 +236,17 @@ func (c *Chunker) Next() (Chunk, error) {
 
 func (c *Chunker) nextChunk(data []byte) (int, uint64) {
 	fp := uint64(0)
-	i := c.minSize
+	n := len(data)
 
-	if len(data) <= c.minSize {
-		return len(data), fp
+	if n <= c.minSize {
+		return n, fp
 	}
 
-	n := min(len(data), c.maxSize)
+	i := c.minSize
+	n = min(n, c.maxSize)
+	m := min(n, c.normSize)
 
-	for ; i < min(n, c.normSize); i++ {
+	for ; i < m; i++ {
 		fp = (fp << 1) + table[data[i]]
 		if (fp & c.maskS) == 0 {
 			return i + 1, fp
