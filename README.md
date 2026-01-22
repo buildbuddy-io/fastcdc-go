@@ -2,7 +2,9 @@
 
 [![Docs](https://godoc.org/github.com/jotfs/fastcdc-go?status.svg)](https://pkg.go.dev/github.com/jotfs/fastcdc-go?tab=doc) [![Build Status](https://travis-ci.org/jotfs/fastcdc-go.svg?branch=master)](https://travis-ci.org/jotfs/fastcdc-go) [![codecov](https://codecov.io/gh/jotfs/fastcdc-go/branch/master/graph/badge.svg)](https://codecov.io/gh/jotfs/fastcdc-go) [![Go Report Card](https://goreportcard.com/badge/github.com/jotfs/fastcdc-go)](https://goreportcard.com/report/github.com/jotfs/fastcdc-go)
 
-FastCDC-Go is a Go library implementing the [FastCDC](#references) content-defined chunking algorithm.
+FastCDC-Go is a Go library implementing the 2016 version of [FastCDC](#references) content-defined chunking algorithm.
+
+The 2020 version is implemented in the `/v2020` package.
 
 Install: 
 ```
